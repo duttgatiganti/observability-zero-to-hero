@@ -10,15 +10,15 @@ spec:
   - name: custom.rules
     rules:
     - alert: HighCpuUsage
-      expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 50
-      for: 5m
+      expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[2m])) * 100) > 10
+      for: 1m
       labels:
         severity: warning
       annotations:
         summary: "High CPU usage on instance {{ $labels.instance }}"
-        description: "CPU usage is above 50% (current value: {{ $value }}%)"
+        description: "CPU usage is above 10% (current value: {{ $value }}%)"
     - alert: PodRestart
-      expr: kube_pod_container_status_restarts_total > 2
+      expr: kube_pod_container_status_restarts_total > 1
       for: 0m
       labels:
         severity: critical
