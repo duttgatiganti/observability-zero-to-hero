@@ -1,3 +1,6 @@
+grafana:
+  enabled: false
+
 alertmanager:
   alertmanagerSpec:
     # Selects Alertmanager configuration based on these labels. Ensure that the Alertmanager configuration has matching labels.
